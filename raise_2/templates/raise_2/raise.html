@@ -1,0 +1,109 @@
+{% extends "raise_2/layout.html" %} 
+{% load static from staticfiles %}
+
+
+<!DOCTYPE html>
+{% block body %}
+
+{% load humanize %}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var djangodata = {{chart_list|safe}};    
+        var data = google.visualization.arrayToDataTable(djangodata);
+        var options = {
+          title: 'Dein Portfolio:'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+</script>
+
+<!-- Header -->
+<header class="w3-container w3-round-large w3-lime w3-center  w3-padding-8" >
+  <h1 class="w3-xlarge">RAISE</h1>
+</header>
+
+
+<div class=" w3-padding-32 w3-container w3-round-large w3-border">
+  <div class="w3-content">
+    <h1>Total Gebühren:</h1>
+    <h1 align="center" >{{total_gebuehren|intcomma}} CHF</h1>
+    <h2>Total realisierte Kursgewinne:</h2>
+    <h2 align="center">{{total_kursgewinn|intcomma}} CHF</h2>
+  </div>
+</div>    
+
+
+<div class=" w3-padding-32 w3-container w3-round-large w3-border">
+    <div class="w3-content">
+      <h1>Der aktuelle Wert beträgt:</h1>
+      <h1 align="center" >{{total_wert|intcomma}} CHF</h1>
+      <h2>Das ist ein Gewinn von:</h2>
+      <h2 align="center">{{total_gewinn|intcomma}} CHF</h2>
+      <h2 align="center">{{total_prozent|intcomma}}%</h2>
+    </div>
+</div>    
+
+<!-- First Grid -->
+<div class=" w3-padding-32 w3-container w3-round-large w3-border">
+  <div class="w3-content">
+
+      <h2>Deine Aktien sind:</h2>
+        <table style="width: 100%">
+          <tr>
+            <th align="left">Aktie</th>
+            <th align="right">Menge</th>
+            <th align="right">Aktuell</th>
+            <th align="right">Einkauf</th>
+            <th align="right">Plus</th>
+            <th align="right">Prozent</th>
+            <th align="right">Gebühren</th>
+            <th align="right">Kursgewinn</th>
+          </tr>
+          {% for object in my_shares_list %}
+            <tr>
+              <td><a href="http://localhost:8000/raise_2/wertschrift/{{ object.share.id }}/">{{ object.share }}</a></td>
+              <td align="right">{{ object.anzahl|intcomma }}</td>
+              <td align="right">{{ object.wert_aktuell|intcomma }} CHF</td>
+              <td align="right">{{ object.wert_schnitt|intcomma }} CHF</td>
+              <td align="right">{{ object.gewinn|intcomma }} CHF</td>
+              <td align="right">{{ object.prozent|intcomma }}%</td>
+              <td align="right">{{ object.gebuehren|intcomma }} CHF</td>
+              <td align="right">{{ object.kursgewinn|intcomma }} CHF</td>
+            </tr>
+          </a>
+          {% endfor %}
+        </table>
+  </div>
+</div>    
+    
+
+<!--Chart-->
+<div class=" w3-padding-32 w3-container w3-round-large w3-border w3-center" >
+  <div class="w3-content">
+    <div id="piechart" style="width: 100%; height: 400px;"></div>
+  </div>
+</div>    
+ 
+
+<div class=" w3-padding-32 w3-container w3-round-large w3-border">
+    <div class="w3-content">
+      <h1>Total Balance von Kunden:</h1>
+      <h1 align="center" >{{total_balance|intcomma}} CHF</h1>
+      <h2>Total Aktienwerte von Kunden:</h2>
+      <h2 align="center">{{total_aktienwert|intcomma}} CHF</h2>
+    </div>
+  </div>   
+
+
+<div class=" w3-padding-16 w3-container w3-round-large w3-lime w3-center">
+    <h1 class="w3-margin w3-xlarge">Gut gemacht!</h1>
+</div>
+
+{% endblock %}
+</html>

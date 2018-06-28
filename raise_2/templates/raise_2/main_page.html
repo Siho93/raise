@@ -1,0 +1,66 @@
+{% extends "raise_2/layout.html" %} 
+{% load static from staticfiles %}
+
+
+<!DOCTYPE html>
+{% block body %}
+<!-- Header -->
+
+
+<img src="{% static 'IMAG0507.png'%}" width="100%" height="auto"/>
+
+
+
+
+
+<!-- First Grid -->
+<div class="w3-padding-64 w3-container w3-round-large w3-border">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Investiere bereits ab 1 CHF</h1>
+      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+
+      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <div class="w3-third w3-center">
+        <img src="{% static 'helvetia.png'%}" width="100%" height="auto"/>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-padding-64 w3-container w3-round-large w3-border">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+        <img src="{% static 'stock-chart.png'%}" width="100%" height="auto"/>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Beginne schon heute Deine Investment Karriere</h1>
+      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+
+      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class=" w3-padding-64 w3-container w3-round-large w3-border w3-center">
+  <div class="w3-content">
+    <p class="w3-xlarge">Mach mehr aus deinem Geld.</p>
+    <a class="w3-button w3-black w3-padding-large w3-large w3-margin-top" href="/raise_2/market" >Zum Markt</a>
+  </div>
+</div>
+
+
+<div class="w3-container w3-lime w3-center w3-padding-32">
+    <h1 class="w3-margin w3-xlarge">Gut gemacht!</h1>
+</div>
+
+{% endblock %}
+</html>

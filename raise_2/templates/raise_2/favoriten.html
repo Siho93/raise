@@ -1,0 +1,61 @@
+{% extends "raise_2/layout.html" %} 
+{% load static from staticfiles %}
+
+
+<!DOCTYPE html>
+{% block body %}
+<!-- Header -->
+<header class="w3-container w3-round-large w3-lime w3-center  w3-padding-8" >
+    <h1 class="w3-xlarge">Favoriten</h1>
+    <!-- <a class="w3-button w3-black w3-padding-large w3-large w3-margin-top" href="http://localhost:8000/raise_2/market" >Zum Markt</a> -->
+</header>
+  
+  <!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+          <h2>Das sind deine Favoriten</h2>
+          <table style="width: 100%">
+            <tr>
+              <th align="left">Aktie</th>
+              <th align="right">Aktuell</th>
+              <th align="right">Plus</th>
+              <th align="right">Prozent</th>
+              <th align="right">Löschen</th>
+            </tr>
+            {% for object in shares_list %}
+              <tr>
+                <td><a href="http://localhost:8000/raise_2/wertschrift/{{ object.aktie.id }}/">{{ object.aktie.name }}</a></td>
+                <td align="right">{{ object.aktie.wert }}</td>
+                <td align="right">{{ object.aktie.plus }}</td>
+                <td align="right">{{ object.aktie.prozent }}%</td>
+                <td align="right"><a href="http://localhost:8000/raise_2/favoriten/delete/{{ object.id }}/">X</a></td>
+  
+              </tr>
+            </a>
+            {% endfor %}
+          </table>
+  
+  <!-- 
+          {% if shares_list %}
+          <ul class="w3-ul w3-hoverable w3-large">
+              <li><h1>Aktien</h1></li>
+          {% for shares in shares_list %}
+              <li class="w3-bar" >
+                  <a href="http://localhost:8000/raise_2/wertschrift/{{ shares.id }}/" class="w3-bar-item w3-left">{{ shares.name }}</a>
+                  <a href="http://localhost:8000/raise_2/wertschrift/{{ shares.id }}/" class="w3-bar-item w3-right">{{ shares.wert }}</a>
+                
+              </li>
+          {% endfor %}
+          </ul>
+          {% else %}
+          <p>No shares are available.</p> 
+          {% endif %} -->
+    </div>
+</div>
+  
+<div class="w3-container w3-lime w3-center">
+    <h1 class="w3-margin w3-xlarge">Gut gemacht!</h1>
+</div>
+
+{% endblock %}
+</html>

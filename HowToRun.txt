@@ -1,0 +1,16 @@
+## in cmd kopieren ##
+
+
+cd Google Drive\Raise\Django\raise_1
+mkvirtualenv py1
+workon py1
+python manage.py runserver
+
+
+
+
+
+
+## connect database
+
+cloud_sql_proxy.exe -instances="raise-207110:europe-west4:raise-sql"=tcp:5433

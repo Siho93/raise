@@ -1,0 +1,26 @@
+{% extends "raise_2/layout.html" %} 
+{% load static from staticfiles %}
+
+
+<!DOCTYPE html>
+{% block body %}
+
+<head>
+    <link rel="stylesheet" href={% static 'register.css'%}> 
+</head>
+
+
+
+<div class="center">
+  <h1>Login</h1>
+    <hr>
+    
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
+
+
+{% endblock %}
+</html>

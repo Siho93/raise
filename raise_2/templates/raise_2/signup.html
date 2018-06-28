@@ -1,0 +1,85 @@
+{% extends "raise_2/layout.html" %} 
+{% load static from staticfiles %}
+
+
+<!DOCTYPE html>
+{% block body %}
+
+
+<!-- Header 
+<header class="w3-display-container w3-center" style="padding:128px 16px">
+   <img src="{% static 'raise_large.png'%}" width="60%" height="auto"/>
+  <h1 class="w3-margin w3-jumbo"></h1>
+  <p class="w3-xlarge">RAISE your Money.</p> 
+  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Go to the Market</button> 
+</header> 
+-->
+
+<head>
+    <link rel="stylesheet" href={% static 'register.css'%}> 
+</head>
+
+
+
+<div class="center">
+  <h1>Sign up</h1>
+    <hr>
+
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <b>
+      {{ field.label_tag }}<br>
+      {{ field }}
+      {% if field.help_text %}
+      {% endif %}
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </b>
+    {% endfor %}
+    <button type="submit">Registrieren</button>
+  </form>
+</div>
+<!-- 
+<form action="action_page.php" style="border:1px solid #ccc">
+  <link rel="stylesheet" href={% static 'register.css' %}>
+    <div class="center">
+      <h1>Registrieren</h1>
+      <hr>
+  
+      <label for="vorname"><b>Vorname</b></label>
+      <input type="text" placeholder="Vorname" name="vorname" required>
+
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Name" name="name" required>
+
+      <label for="geburtsdatum"><b>Geburtsdatum</b></label>
+      <input type="date" placeholder="Geburtsdatum" name="geburtsdatum" style="margin-bottom:15px" required>
+
+      <label for="email"><b>E-Mail</b></label>
+      <input type="text" placeholder="E-Mail" name="email" required>
+  
+      <label for="passwort"><b>Passwort</b></label>
+      <input type="password" placeholder="Passwort" name="passwort" required>
+  
+      <label for="passwort-wied"><b>Passwort wiederholen</b></label>
+      <input type="password" placeholder="Passwort" name="passwort-wied" required>
+  
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px" required> Hiermit bestätige ich die AGB gelesen zu haben.
+      </label>
+  
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">AGB</a>.</p>
+  
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+ -->
+
+
+{% endblock %}
+</html>

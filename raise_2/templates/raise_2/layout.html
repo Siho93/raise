@@ -1,0 +1,82 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<title>RAISE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+<style>
+    table tr:nth-child(even) {
+        background-color: #eee;
+    }
+    table tr:nth-child(odd) {
+        background-color: #fff;
+    }
+</style>
+
+<!-- Navbar -->
+<div class=" " style="width: device-width" >
+    <div class="w3-bar w3-dark-grey w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-lime w3-large w3-black" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-lime"><img src="{% static 'raise.png'%}"/></a>
+      <a href="/raise_2/mein_konto" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-lime">Mein Konto</a>
+      <a href="/raise_2/favoriten" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-lime">Favoriten</a>
+      <a href="/raise_2/market" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-lime">Markt</a>
+      <a href="/raise_2/plan" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-lime">Plan</a>
+      <a href="/raise_2/einstellungen" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-lime">Einstellungen</a>
+      <a href="/raise_2/compute" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-lime">History</a>
+      <a href="/raise_2/register" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-lime">Register</a>
+      <a href="/raise_2/login" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-lime">Login</a>
+      <a href="/raise_2/raise" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-lime">RAISE</a>
+    </div>
+
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Main Konto</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Favoriten</a>
+      <a href="#raise_2/market" class="w3-bar-item w3-button w3-padding-large">Markt</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Plan</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Einstellungen</a>
+    </div>
+</div>
+
+
+{% block body %}
+
+{% endblock %}
+
+<!-- Footer -->
+<footer class="w3-container  w3-center w3-dark-grey w3-hide-small">  
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>

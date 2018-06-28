@@ -1,0 +1,101 @@
+{% extends "raise_2/layout.html" %} 
+{% load static from staticfiles %}
+
+
+<!DOCTYPE html>
+{% block body %}
+
+{% load humanize %}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var djangodata = {{chart_list|safe}};    
+        var data = google.visualization.arrayToDataTable(djangodata);
+        var options = {
+          title: 'Dein Plan:'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+</script>
+
+<!-- Header -->
+<header class="w3-container w3-round-large w3-lime w3-center  w3-padding-8" >
+  <h1 class="w3-xlarge">Plan</h1>
+  <!-- <a class="w3-button w3-black w3-padding-large w3-large w3-margin-top" href="http://localhost:8000/raise_2/market" >Zum Markt</a> -->
+</header>
+
+
+<div class=" w3-padding-32 w3-container w3-round-large w3-border">
+    <div class="w3-content">
+        <h2>Du hast {{gesamtwert|intcomma}} CHF in deinem Plan:</h2>
+    </div>
+  </div>    
+
+
+<div class=" w3-padding-32 w3-container w3-round-large w3-border w3-center" >
+  <div class="w3-content">
+    <div id="piechart" style="width: 100%; height: 400px;"></div>
+  </div>
+</div>    
+
+
+<!-- First Grid -->
+<div class=" w3-padding-32 w3-container w3-round-large w3-border">
+  <div class="w3-content">
+
+      <h2>Du hast folgende Aktien in deinem Plan:</h2>
+        <table style="width: 100%">
+          <tr>
+            <th align="left">Aktie</th>
+            <th align="right">Tag</th>
+            <th align="right">Menge Aktuell</th>
+            <th align="right">Preis</th>
+            <th align="right">Löschen</th>
+          </tr>
+          {% for object in my_shares_list %}
+            <tr>
+              <td><a href="http://localhost:8000/raise_2/wertschrift/{{ object.share.id }}/">{{ object.share }}</a></td>
+              <td align="right">{{ object.day }}</td>
+              <td align="right">{{ object.volume|intcomma }}</td>
+              <td align="right">{{ object.value|intcomma }} CHF</td>
+              <td align="right"><a href="http://localhost:8000/raise_2/plan/delete/{{ object.id }}/">X</a></td>
+            </tr>
+          </a>
+          {% endfor %}
+        </table>
+  </div>
+</div>    
+
+
+<div class=" w3-padding-32 w3-container w3-round-large w3-border w3-center">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+      <b>
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </b>
+      {% endfor %}
+      <button type="submit">Ändern</button>
+    </form>
+    </div>
+
+
+
+<div class=" w3-padding-16 w3-container w3-round-large w3-lime w3-center">
+  <h1 class="w3-margin w3-xlarge">Gut gemacht!</h1>
+</div>
+
+
+{% endblock %}
+</html>
